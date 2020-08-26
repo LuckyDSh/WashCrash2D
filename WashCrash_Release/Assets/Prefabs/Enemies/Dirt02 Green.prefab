@@ -1,0 +1,220 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!95 &257376963
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999604112981973194}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b4b335976b106134295391c69e55f18e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5794704100943392418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999604112981973194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28287ddfdfa97544f8997d6e372c8c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  deathEffect: {fileID: 5136758960499370771, guid: 7c65c6075ab135940bff8ddb162081b2,
+    type: 3}
+  damage: 10
+  reward: 20
+--- !u!114 &5794704100943392477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999604112981973194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bcd138ae7f086a419000ed361415396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 257376963}
+  moveSpeed: 5
+  smoothedSpeed: 0.5
+  turnSpeed: 0.139
+  repelRange: 10
+  repelAmount: 1
+  startMinChaseDistance: 5
+  minChaseDistance: 3
+  maxChaseDistance: 15
+--- !u!1001 &6250885003454855528
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1416477727077634537, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f45ce9063fba42548a613c80397a3a4c,
+        type: 3}
+    - target: {fileID: 1416477727077634537, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416477727077634537, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.0017776738
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416477727077634537, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.0017363689
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 394
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021209975225856984, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 392
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386728, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386729, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386729, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386729, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.0017776738
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386729, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.0017363689
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386729, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386729, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.0019729398
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386729, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.0018772195
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386729, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064073536665386729, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.000009090727
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584496231726277026, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_Name
+      value: Dirt02 Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584496231726277026, guid: 9e042ff3106606240b771e855fb15138,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9e042ff3106606240b771e855fb15138, type: 3}
+--- !u!1 &999604112981973194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6584496231726277026, guid: 9e042ff3106606240b771e855fb15138,
+    type: 3}
+  m_PrefabInstance: {fileID: 6250885003454855528}
+  m_PrefabAsset: {fileID: 0}
