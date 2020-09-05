@@ -9,11 +9,14 @@ using System.Collections;
 
 public class LevelLoad : MonoBehaviour
 {
+    #region Variables
     public GameObject pressAgain;
     private bool escape = false;
     private bool pressedTwice = false;
     [SerializeField] private GameObject[] transitionEffects;
+    #endregion
 
+    #region UnityMethods
     private void Update()
     {
         Cursor.visible = true;
@@ -40,6 +43,7 @@ public class LevelLoad : MonoBehaviour
 
         Escape();
     }
+    #endregion
 
     public void Escape()
     {

@@ -23,7 +23,6 @@ public class Enemy : Entity
                 Die();
             }
 
-
             //base.Die();
         }
     }

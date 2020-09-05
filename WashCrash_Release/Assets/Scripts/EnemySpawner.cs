@@ -22,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     #region UnityMethods
 
+    // using OnEnable() because of the only scene in th game
     private void OnEnable()
     {
         s_is_On_New_Level = false;
@@ -121,11 +122,11 @@ public class EnemySpawner : MonoBehaviour
             s_is_New_Enemy = true;
 
             Debug.Log(s_indexOfEnemy.ToString());
-
+            
             s_indexOfEnemy++;
         }
 
-        if (level <= 5)
+        if (level <= 4)
         {
             Debug.Log("Levels from 0 to 5");
 
@@ -142,7 +143,7 @@ public class EnemySpawner : MonoBehaviour
             else if (eType.label == "WhiteDirt")
                 eType.spawnChance = 0f;
         }
-        else if (level <= 10)
+        else if (level <= 9)
         {
             Debug.Log("Levels from 5 to 10");
 
@@ -159,7 +160,7 @@ public class EnemySpawner : MonoBehaviour
             else if (eType.label == "WhiteDirt")
                 eType.spawnChance = 0f;
         }
-        else if (level <= 15)
+        else if (level <= 14)
         {
             Debug.Log("Levels from 10 to 15");
 
@@ -176,7 +177,7 @@ public class EnemySpawner : MonoBehaviour
             else if (eType.label == "WhiteDirt")
                 eType.spawnChance = 0f;
         }
-        else if (level <= 25)
+        else if (level <= 24)
         {
             Debug.Log("Levels from 15 to 25");
 
@@ -193,7 +194,7 @@ public class EnemySpawner : MonoBehaviour
             else if (eType.label == "WhiteDirt")
                 eType.spawnChance = 0f;
         }
-        else if (level <= 35)
+        else if (level <= 34)
         {
             Debug.Log("Levels from 25 to 35");
 
@@ -210,7 +211,7 @@ public class EnemySpawner : MonoBehaviour
             else if (eType.label == "WhiteDirt")
                 eType.spawnChance = 0f;
         }
-        else if (level <= 45)
+        else if (level <= 44)
         {
             Debug.Log("Levels from 35 to 45");
 

@@ -1,5 +1,6 @@
 ﻿
 using BayatGames.SaveGameFree;
+using System.Collections;
 using UnityEngine;
 
 public class Player : Entity
@@ -10,6 +11,7 @@ public class Player : Entity
     private bool timeIsOn;
     [Range(1, 10)] private int number_of_record = 1;
     [SerializeField] private GameObject GO_ui;
+    [SerializeField] private int timeFreeze = 3;
     #endregion
 
     #region Unity Methods 
@@ -49,6 +51,11 @@ public class Player : Entity
         if (collision.collider.tag == "EnemyRed")
         {
             Die();
+        }
+
+        if (collision.collider.tag == "EnemyBlue")
+        {
+            StartCoroutine(Freeze());
         }
     }
 
@@ -91,4 +98,13 @@ public class Player : Entity
         base.Die(); // effect of death will be called second time here
     }
     #endregion
+
+    private IEnumerator Freeze()
+    {
+        PlayerMovement._rb.velocity /= 2f;
+
+        yield return new WaitForSeconds(timeFreeze);
+
+        PlayerMovement._rb.velocity *= 2f;
+    }
 }

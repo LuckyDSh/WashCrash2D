@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
+    #region Variables
     public GameObject loadingScreen;
     public Slider slider;
     public Text progressText;
     private bool is_gameStarted = false;
     [SerializeField] private int seconds = 2;
+    #endregion
 
+    #region UnityMethods 
     private void Start()
     {
         is_gameStarted = false;
@@ -29,6 +32,8 @@ public class LevelLoader : MonoBehaviour
             is_gameStarted = false;
         }
     }
+
+    #endregion
 
     public void SetGameToBeStarted()
     {

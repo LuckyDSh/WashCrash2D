@@ -3,7 +3,6 @@
 *	All rights reserved
 */
 
-using System.Collections;
 using UnityEngine;
 
 public class BlueDirtLogic : MonoBehaviour
@@ -13,10 +12,11 @@ public class BlueDirtLogic : MonoBehaviour
     private float timeFreeze = 1f;
     #endregion
 
-    #region UnityMethods
+#region UnityMethods
 
-    #endregion
+#endregion
 
+#if false
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
@@ -33,4 +33,5 @@ public class BlueDirtLogic : MonoBehaviour
 
         PlayerMovement._rb.velocity *= 2f;
     }
+#endif
 }

@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MeltBar
+  - BackGround
+  - Drop
+  - SpecialDrop(TimerStop)
+  - SpecialDrop(ExtraLife)
+  - SpecialDrop(Coin)
+  - Boss
+  - Enemy
+  - EnemyRed
+  - EnemyBlue
   layers:
   - Default
   - TransparentFX

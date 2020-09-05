@@ -40,7 +40,7 @@ public class LevelUp : MonoBehaviour
 
             progressSlider.value = progressSlider.minValue;
 
-            s_LevelNumber++; // change to ++ 
+            s_LevelNumber += 5; // change to ++ 
             EnemySpawner.s_is_On_New_Level = true;
 
             if (s_LevelNumber == 50)
