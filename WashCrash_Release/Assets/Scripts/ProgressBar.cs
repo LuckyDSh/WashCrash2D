@@ -57,7 +57,7 @@ public class ProgressBar : MonoBehaviour
         fill.color = gradient.Evaluate(s_meltBarSlider.normalizedValue);//
     }
 
-    private IEnumerator FreezeMeltBar()
+    public IEnumerator FreezeMeltBar()
     {
         // set the MeltBar to max
         s_meltBarSlider.value = s_meltBarSlider.maxValue;

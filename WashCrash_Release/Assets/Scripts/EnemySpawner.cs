@@ -18,6 +18,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject storyPanel;
     public static bool s_is_New_Enemy = false;
     public static int s_indexOfEnemy; // used in EnemyIntro
+    [HideInInspector] public bool is_stoped = false;
     #endregion
 
     #region UnityMethods
@@ -28,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
         s_is_On_New_Level = false;
         s_is_New_Enemy = false;
         s_indexOfEnemy = 0;
+        is_stoped = false;
 
         foreach (EnemyType enemyType in currentWave.enemies)
         {
@@ -51,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnRadius = startSpawnRadius /** Progression.Growth*/;
 
-        if (Time.time >= nextSpawnTime)
+        if (Time.time >= nextSpawnTime && !is_stoped)
         {
             SpawnWave();
             nextSpawnTime = Time.time + 1f / currentWave.spawnRate;
@@ -122,7 +124,7 @@ public class EnemySpawner : MonoBehaviour
             s_is_New_Enemy = true;
 
             Debug.Log(s_indexOfEnemy.ToString());
-            
+
             s_indexOfEnemy++;
         }
 

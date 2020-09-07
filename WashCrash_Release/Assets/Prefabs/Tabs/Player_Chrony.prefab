@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4011376486113809197}
   - component: {fileID: 4981013303455631455}
   - component: {fileID: 1526108790153440244}
-  - component: {fileID: 7998329720562608246}
+  - component: {fileID: 8927790451140039477}
   m_Layer: 8
   m_Name: Player_Chrony
   m_TagString: Player
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_enemyKilled: 0
   timeOfPlay: 
   moneyAmount: 0
---- !u!114 &7998329720562608246
+--- !u!114 &8927790451140039477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,14 +194,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4571779061720186174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb277b92b49d4ed41affb391b4702058, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f7b9507d3c915f4c8bbf57e102434ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
-  freeze_amount: 2
-  timeOfImpact: 2
-  freezeEffect: {fileID: 0}
-  reloadTime: 3
 --- !u!1001 &1679492188062551786
 PrefabInstance:
   m_ObjectHideFlags: 0

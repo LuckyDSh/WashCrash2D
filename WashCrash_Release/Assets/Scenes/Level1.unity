@@ -4974,6 +4974,7 @@ MonoBehaviour:
   _BossesPrefabs: []
   currentWave: {fileID: 1135767047}
   storyPanel: {fileID: 0}
+  is_stoped: 0
 --- !u!4 &1135767050
 Transform:
   m_ObjectHideFlags: 0
@@ -5713,6 +5714,7 @@ MonoBehaviour:
   - {fileID: 5952558156209884003, guid: c6faf59409b10044d88c1fb39f14e361, type: 3}
   currentWave: {fileID: 1231338863}
   storyPanel: {fileID: 1025909698}
+  is_stoped: 0
 --- !u!4 &1231338861
 Transform:
   m_ObjectHideFlags: 0
@@ -6870,6 +6872,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571779061720186174, guid: f214d232939ae6a4e81c06a5f2e2f4f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4981013303455631455, guid: f214d232939ae6a4e81c06a5f2e2f4f7,
         type: 3}

@@ -10,6 +10,7 @@ public class BlockDestroy : MonoBehaviour
     #region Variables
     [SerializeField]
     private float minChaseDistance = 10f;
+    public GameObject destroy_effect;
     #endregion
 
     #region UnityMethods

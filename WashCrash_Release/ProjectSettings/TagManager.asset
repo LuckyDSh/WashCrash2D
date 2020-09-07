@@ -14,6 +14,7 @@ TagManager:
   - Enemy
   - EnemyRed
   - EnemyBlue
+  - Block
   layers:
   - Default
   - TransparentFX
