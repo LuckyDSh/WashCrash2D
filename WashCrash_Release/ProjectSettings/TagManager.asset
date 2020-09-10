@@ -21,6 +21,8 @@ TagManager:
   - SpecialDrop
   - SpecialDrop(Armor)
   - ExtraLife
+  - SpecialDrop(Coinx3)
+  - SpecialDrop(Coinx2)
   layers:
   - Default
   - TransparentFX
