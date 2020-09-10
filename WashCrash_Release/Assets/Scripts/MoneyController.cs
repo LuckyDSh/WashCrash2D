@@ -13,13 +13,14 @@ public class MoneyController : MonoBehaviour
     [SerializeField] private Text money_amount;
     [HideInInspector] public static int number;
     public static bool game_is_over = false;
+    private PlayerProgress progress;
     #endregion
 
     #region UnityMethods
     void Start()
     {
         //number = SaveGame.Load<int>("Money");
-        PlayerProgress progress = SaveGame.Load<PlayerProgress>("PlayerProgress");
+        progress = SaveGame.Load<PlayerProgress>("PlayerProgress");
         if (progress != null && game_is_over)
         {
             number += progress.s_moneyAmount;
@@ -34,12 +35,20 @@ public class MoneyController : MonoBehaviour
                 money_amount.text = number.ToString();
             }
             game_is_over = false;
+            progress.s_moneyAmount = 0;
+            SaveGame.Save("PlayerProgress", progress);
         }
+    }
+
+    private void OnEnable()
+    {
+        number = SaveGame.Load<int>("Money");
+        game_is_over = true;
     }
 
     private void OnDisable()
     {
-        SaveGame.Save<int>("Money", number);
+        SaveGame.Save("Money", number);
     }
     #endregion
 }

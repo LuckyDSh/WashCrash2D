@@ -3,6 +3,7 @@
 public class UILoader : MonoBehaviour
 {
     public GameObject uiToLoad;
+    public GameObject uiToHide;
     public bool isActive = false;
 
     public void Loading()
@@ -21,11 +22,13 @@ public class UILoader : MonoBehaviour
     {
         isActive = true;
         uiToLoad.SetActive(true);
+        uiToHide.SetActive(false);
     }
 
     public void DeActivateUI()
     {
         isActive = false;
         uiToLoad.SetActive(false);
+        uiToHide.SetActive(true);
     }
 }

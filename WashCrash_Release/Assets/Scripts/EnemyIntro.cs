@@ -17,7 +17,9 @@ public class EnemyIntro : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
+        m_index = 0;
         timeScale = 0.2f;
+
         foreach (var story in stories)
         {
             story.SetActive(false);
@@ -37,9 +39,13 @@ public class EnemyIntro : MonoBehaviour
     private void Intro_On(int index)
     {
         m_index = index;
-        Time.timeScale = timeScale;
-        stories[index].SetActive(true);
-        EnemySpawner.s_is_New_Enemy = false;
+
+        if (m_index < stories.Length)
+        {
+            Time.timeScale = timeScale;
+            stories[index].SetActive(true);
+            EnemySpawner.s_is_New_Enemy = false;
+        }
     }
 
     public void Intro_Off()

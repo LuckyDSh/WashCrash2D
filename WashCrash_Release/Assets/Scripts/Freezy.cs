@@ -40,10 +40,12 @@ public class Freezy : MonoBehaviour
         Instantiate(freezeEffect, transform.position, transform.rotation);
         Collider2D colliders = Physics2D.OverlapCircle(transform.position, radius); // now captures only one collider
         colliders.GetComponent<EnemyAI>().moveSpeed /= freeze_amount;
+        colliders.GetComponent<Enemy>().freezy_effect.SetActive(true);
 
         yield return new WaitForSeconds(timeOfImpact);
 
         colliders.GetComponent<EnemyAI>().moveSpeed *= freeze_amount;
+        colliders.GetComponent<Enemy>().freezy_effect.SetActive(false);
 
         yield return null;
     }

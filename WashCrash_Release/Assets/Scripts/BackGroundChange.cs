@@ -20,27 +20,27 @@ public class BackGroundChange : MonoBehaviour
 
     void Update()
     {
-        if (LevelUp.s_LevelNumber <= 5)
+        if (LevelUp.s_LevelNumber <= 4)
         {
             BG_Change(0);
         }
-        else if (LevelUp.s_LevelNumber <= 10)
+        else if (LevelUp.s_LevelNumber <= 9)
         {
             BG_Change(1);
         }
-        else if (LevelUp.s_LevelNumber <= 15)
+        else if (LevelUp.s_LevelNumber <= 14)
         {
             BG_Change(2);
         }
-        else if (LevelUp.s_LevelNumber <= 25)
+        else if (LevelUp.s_LevelNumber <= 24)
         {
             BG_Change(3);
         }
-        else if (LevelUp.s_LevelNumber <= 35)
+        else if (LevelUp.s_LevelNumber <= 34)
         {
             BG_Change(4);
         }
-        else if (LevelUp.s_LevelNumber <= 40)
+        else if (LevelUp.s_LevelNumber <= 44)
         {
             BG_Change(5);
         }
@@ -50,6 +50,7 @@ public class BackGroundChange : MonoBehaviour
 
     private void BG_Change(int index)
     {
-        bgRenderer.sprite = sprites[index];
+        if (index < sprites.Length)
+            bgRenderer.sprite = sprites[index];
     }
 }

@@ -7,8 +7,12 @@ public class SoundButtonController : MonoBehaviour
     public bool isOn = true;
     public Sprite onImage;
     public Sprite offImage;
+    private AudioManager audio;
 
-    public AudioListener audioListener;
+    private void Start()
+    {
+        audio = FindObjectOfType<AudioManager>();
+    }
 
     public void Switch()
     {
@@ -26,14 +30,16 @@ public class SoundButtonController : MonoBehaviour
     {
         isOn = true;
         thisButton.image.sprite = onImage;
-        AudioListener.pause = true;
+        if (audio != null)
+            audio.SoundOn();
     }
 
     public void SetOff()
     {
         isOn = false;
         thisButton.image.sprite = offImage;
-        AudioListener.pause = false;
+        if (audio != null)
+            audio.Silence();
     }
-    
+
 }

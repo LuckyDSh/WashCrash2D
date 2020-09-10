@@ -8,11 +8,11 @@ using UnityEngine;
 public class Volty : MonoBehaviour
 {
     #region Variables
-    private float reload_time = 5f;
-    private float radius = 2f;
-    private GameObject volty_effect;
+    [SerializeField] private float reload_time = 5f;
+    [SerializeField] private float radius = 2f;
+    [SerializeField] private GameObject volty_effect;
+    [SerializeField] private GameObject volty_btn;
     private float reload_time_buffer;
-    private GameObject volty_btn;
     #endregion
 
     #region UnityMethods
@@ -40,8 +40,9 @@ public class Volty : MonoBehaviour
 
         Enemy enemy = colliders.GetComponent<Enemy>();
 
-        if(enemy != null)
+        if (enemy != null)
         {
+            enemy.volty_effect.SetActive(true);
             enemy.Die();
         }
     }

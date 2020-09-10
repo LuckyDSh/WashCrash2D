@@ -15,6 +15,12 @@ TagManager:
   - EnemyRed
   - EnemyBlue
   - Block
+  - BlueBoss
+  - GreenBoss
+  - RedBoss
+  - SpecialDrop
+  - SpecialDrop(Armor)
+  - ExtraLife
   layers:
   - Default
   - TransparentFX

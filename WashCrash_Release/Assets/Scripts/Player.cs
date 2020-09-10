@@ -2,6 +2,7 @@
 using BayatGames.SaveGameFree;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Entity
 {
@@ -9,9 +10,13 @@ public class Player : Entity
     private float time_overall;
     public static string time_txt = "0";
     private bool timeIsOn;
+    public GameObject armorEffect;
+    public GameObject rebornEffect;
     [Range(1, 10)] private int number_of_record = 1;
     [SerializeField] private GameObject GO_ui;
+    private Image ui_extraLife;
     [SerializeField] private int timeFreeze = 3;
+    public static bool is_extraLife;
     #endregion
 
     #region Unity Methods 
@@ -19,6 +24,7 @@ public class Player : Entity
     {
         time_overall = 0;
         timeIsOn = true;
+        ui_extraLife = GameObject.FindGameObjectWithTag("ExtraLife").GetComponent<Image>();
     }
 
     private void Update()
@@ -36,12 +42,33 @@ public class Player : Entity
 
         if (ProgressBar.s_meltBarSlider.value <= 0)
         {
-            Die();
+            if (is_extraLife)
+            {
+                rebornEffect.SetActive(true);
+                ui_extraLife.enabled = false;
+                ProgressBar.s_meltBarSlider.value += ProgressBar.s_meltBarSlider.maxValue / 2;
+                is_extraLife = false;
+            }
+            else
+            {
+                Die();
+            }
         }
 
         if (GameOver.meltBar.value == 0) // min value
         {
-            Die();
+            if (is_extraLife)
+            {
+                rebornEffect.SetActive(true);
+                ui_extraLife.enabled = false;
+                is_extraLife = false;
+                GameOver.meltBar.value += GameOver.meltBar.maxValue / 2;
+            }
+            else
+            {
+                is_extraLife = false;
+                Die();
+            }
         }
     }
     #endregion
@@ -50,7 +77,16 @@ public class Player : Entity
     {
         if (collision.collider.tag == "EnemyRed")
         {
-            Die();
+            if (is_extraLife)
+            {
+                rebornEffect.SetActive(true);
+                ui_extraLife.enabled = false;
+                is_extraLife = false;
+            }
+            else
+            {
+                Die();
+            }
         }
 
         if (collision.collider.tag == "EnemyBlue")

@@ -17,6 +17,7 @@ public class Entity : MonoBehaviour
     {
         GameObject effect = Instantiate(deathEffect, transform.position, transform.rotation);
         //effect.transform.localScale = transform.localScale;
+        VibrationController.is_vibrating = true;
 
         Destroy(effect,1f);
         Destroy(gameObject); 

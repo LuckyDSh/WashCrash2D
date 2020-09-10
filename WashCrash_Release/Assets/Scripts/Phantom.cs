@@ -8,7 +8,7 @@ using UnityEngine;
 public class Phantom : MonoBehaviour
 {
 	#region Variables
-
+        
 	#endregion
     
 	#region UnityMethods

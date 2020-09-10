@@ -3,33 +3,50 @@
 public class EnemySpawner : MonoBehaviour
 {
     #region Declarations
+    [Header("General characteristics")]
+    [Space]
     public float startSpawnRadius = 20f;
     private float spawnRadius;
     public Transform spawnTargetPos;
-    [SerializeField] private GameObject[] _BossesPrefabs;
 
     //[HideInInspector]
     public Wave currentWave;
 
-    private float nextSpawnTime = 1f;
-    private Vector2 posForBoss = Vector2.zero;
+    [Space]
+    [Header("Boss Spawning")]
+    [Space]
+    [SerializeField] public GameObject[] _BossesPrefabs;
+    [SerializeField] private GameObject OrienteeringForBossSpawn;
     public static bool _bossIsSpawned = false;
-    public static bool s_is_On_New_Level = false;
+    public static GameObject boss_spawned = null;
+
+    [Space]
+    [Header("Level Changing ")]
+    [Space]
     [SerializeField] private GameObject storyPanel;
+    public static bool s_is_On_New_Level = false;
     public static bool s_is_New_Enemy = false;
     public static int s_indexOfEnemy; // used in EnemyIntro
+
     [HideInInspector] public bool is_stoped = false;
+    private float nextSpawnTime = 1f;
+    private Vector2 posForBoss = Vector2.zero;
+    private int level;
+    private bool is_changed;
     #endregion
 
     #region UnityMethods
 
     // using OnEnable() because of the only scene in th game
-    private void OnEnable()
+    private void Start()
     {
+        is_changed = false;
         s_is_On_New_Level = false;
         s_is_New_Enemy = false;
         s_indexOfEnemy = 0;
         is_stoped = false;
+        boss_spawned = null;
+        OrienteeringForBossSpawn = GameObject.FindGameObjectWithTag("BackGround");
 
         foreach (EnemyType enemyType in currentWave.enemies)
         {
@@ -52,6 +69,13 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         spawnRadius = startSpawnRadius /** Progression.Growth*/;
+        posForBoss = OrienteeringForBossSpawn.transform.position;
+        level = LevelUp.s_LevelNumber;
+
+        if (s_is_On_New_Level)
+        {
+            On_new_level();
+        }
 
         if (Time.time >= nextSpawnTime && !is_stoped)
         {
@@ -62,7 +86,7 @@ public class EnemySpawner : MonoBehaviour
         // System generates 30 levels 
         // and there is 3 types of bosses
         #region BOSS SPAWNING
-        if (LevelUp.s_LevelNumber == 10)
+        if (LevelUp.s_LevelNumber % 10 == 0)
         {
             if (_bossIsSpawned)
             {
@@ -71,7 +95,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        if (LevelUp.s_LevelNumber == 20)
+        if (LevelUp.s_LevelNumber % 20 == 0)
         {
             if (_bossIsSpawned)
             {
@@ -80,7 +104,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        if (LevelUp.s_LevelNumber == 30)
+        if (LevelUp.s_LevelNumber % 30 == 0)
         {
             if (_bossIsSpawned)
             {
@@ -89,10 +113,12 @@ public class EnemySpawner : MonoBehaviour
             }
         }
         #endregion
+       
     }
 
     #endregion
 
+    #region SpawnWave()
     private void SpawnWave()
     {
         foreach (EnemyType eType in currentWave.enemies)
@@ -106,27 +132,17 @@ public class EnemySpawner : MonoBehaviour
             if (s_is_On_New_Level)
             {
                 SpawnChanceChange(eType);
-                s_is_On_New_Level = false;
+                //s_is_On_New_Level = false;
             }
         }
+        s_is_On_New_Level = false;
     }
+    #endregion
 
     private void SpawnChanceChange(EnemyType eType)
     {
         #region ENEMY SPAWNRATE CONFIGURATION
         // think of optimization
-
-        int level = LevelUp.s_LevelNumber;
-
-        if (level % 5 == 0 && level != 0) // think how to quit the loop
-        {
-            storyPanel.SetActive(true);
-            s_is_New_Enemy = true;
-
-            Debug.Log(s_indexOfEnemy.ToString());
-
-            s_indexOfEnemy++;
-        }
 
         if (level <= 4)
         {
@@ -234,6 +250,7 @@ public class EnemySpawner : MonoBehaviour
         #endregion
     }
 
+    #region SpawnEnemy()
     private void SpawEnemy(GameObject enemyPrefab)
     {
         if (spawnTargetPos == null)
@@ -241,16 +258,31 @@ public class EnemySpawner : MonoBehaviour
 
         Vector2 spawnPos = spawnTargetPos.position;
         spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
-        posForBoss = spawnPos;
 
         if (enemyPrefab != null)
             Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+    }
+    #endregion
+
+    private void On_new_level()
+    {
+        if (level % 5 == 0 && level != 0 && is_changed) // think how to quit the loop
+        {
+            storyPanel.SetActive(true);
+            s_is_New_Enemy = true;
+
+            Debug.Log(s_indexOfEnemy.ToString());
+
+            s_indexOfEnemy++;
+            is_changed = false;
+        }
     }
 
     public void SpawnBoss(GameObject BossToSpawn, Vector2 pos, Quaternion rotation)
     {
         // also change environment and change the music 
 
-        Instantiate(BossToSpawn, pos, rotation);
+
+        boss_spawned = Instantiate(BossToSpawn, pos, rotation);
     }
 }

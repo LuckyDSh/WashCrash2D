@@ -9,11 +9,13 @@ public class LevelUp : MonoBehaviour
     public Slider progressSlider;
     private Enemy[] enemies;
     public static bool s_isOnNewLevel = false; // Used in ProgressBar
-    public static int s_LevelNumber = 0;
+    public static int s_LevelNumber;
+    private Slider level_slider;
     #endregion
 
     private void Awake()
     {
+        level_slider = FindObjectOfType<LevelBar>().slider;
         s_LevelNumber = 0;
         s_isOnNewLevel = false;
     }
@@ -28,8 +30,9 @@ public class LevelUp : MonoBehaviour
             ProgressBar.isOn = false;
             s_isOnNewLevel = true;
             LevelBar.progress = 0;
-            
+            level_slider.value = 0;
 
+            #region Enemy Die()
             foreach (var enemy in enemies)
             {
                 if (enemy == null)
@@ -37,12 +40,14 @@ public class LevelUp : MonoBehaviour
 
                 enemy.Die();
             }
+            #endregion
 
-            progressSlider.value = progressSlider.minValue;
+            progressSlider.value = 0;
 
-            s_LevelNumber += 5; // change to ++ 
             EnemySpawner.s_is_On_New_Level = true;
+            ++s_LevelNumber; // change to ++ 
 
+            #region Final
             if (s_LevelNumber == 50)
             {
                 foreach (var ui in uiToActivate)
@@ -50,7 +55,9 @@ public class LevelUp : MonoBehaviour
                     ui.SetActive(true);
                 }
             }
-            if (s_LevelNumber % 10 == 0)
+            #endregion
+
+            if (s_LevelNumber % 10 == 0 && s_LevelNumber > 0)
             {
                 EnemySpawner._bossIsSpawned = true;
             }

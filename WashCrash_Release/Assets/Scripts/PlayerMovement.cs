@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        joystick = GameObject.Find("Dynamic Joystick").GetComponent<Joystick>();
     }
 
     // Update is called once per frame

@@ -73,12 +73,13 @@ public class LevelLoad : MonoBehaviour
     public void LoadPreviousLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        MoneyController.game_is_over = true;
     }
 
     public void LoadThisLevel()
     {
+        //MoneyController.number += PlayerScoreRecorder.s_recorder_instance.moneyAmount;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
     }
 
 }

@@ -11,8 +11,10 @@ public class BossLifeBar : MonoBehaviour
     #region Variables
     private Slider slider;
     [SerializeField] private Bosses[] bosses;
-    [SerializeField] private Image fill;
+    [SerializeField] private GameObject fill;
     [SerializeField] private GameObject border;
+    private int health;
+    private GameObject boss_that_was_spawned;
     #endregion
 
     #region UnityMethods
@@ -21,7 +23,8 @@ public class BossLifeBar : MonoBehaviour
     {
         Debug.Log("BossBar Start is called");
 
-        fill.enabled = false;
+
+        fill.SetActive(false);
         border.SetActive(false);
         slider = GetComponent<Slider>();
 
@@ -37,27 +40,32 @@ public class BossLifeBar : MonoBehaviour
 
     private void SetValue()
     {
-        foreach (var boss in bosses)
-        {
-            if (boss.bossPref.activeInHierarchy)
+        boss_that_was_spawned = EnemySpawner.boss_spawned;
+
+        if (boss_that_was_spawned)
+            foreach (var boss in bosses)
             {
-                int health = boss.bossPref.GetComponent<Entity>().health;
-
-                fill.enabled = true;
-                border.SetActive(true);
-                slider.maxValue = health;
-
-                if (health > 0)
-                    slider.value = health;
-                   
-                else
+                if (boss.bossPref.tag == EnemySpawner.boss_spawned.tag)
                 {
-                    slider.value = slider.maxValue;
-                    gameObject.SetActive(false);
+                    health = boss_that_was_spawned.GetComponent<Entity>().health;
+
+                    fill.SetActive(true);
+                    border.SetActive(true);
+                    slider.maxValue = health;
+                    fill.GetComponent<Image>().color = boss.color;
+
+                    if (health > 0)
+                        slider.value = health;
+
+                    else if (health <= 0)
+                    {
+                        slider.value = slider.maxValue;
+                        fill.SetActive(false);
+                        border.SetActive(false);
+                    }
                 }
 
                 break;
             }
-        }
     }
 }

@@ -8,7 +8,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2603684736805700879}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -133,6 +133,8 @@ MonoBehaviour:
     type: 3}
   damage: 10
   reward: 100
+  freezy_effect: {fileID: 0}
+  volty_effect: {fileID: 0}
 --- !u!114 &5794704102554627431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +433,11 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.93934673
       objectReference: {fileID: 0}
+    - target: {fileID: 8529801204956692687, guid: 0a3972e964dcd2b47b2a3bc58d35d554,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9198020450770373298, guid: 0a3972e964dcd2b47b2a3bc58d35d554,
         type: 3}
       propertyPath: m_IsActive
@@ -619,7 +626,7 @@ PrefabInstance:
     - target: {fileID: 6584496231726277026, guid: 9e042ff3106606240b771e855fb15138,
         type: 3}
       propertyPath: m_TagString
-      value: Boss
+      value: BlueBoss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e042ff3106606240b771e855fb15138, type: 3}
