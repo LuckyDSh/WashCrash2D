@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,10 +26,8 @@ public class LevelLoader : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            SetGameToBeStarted();
-        }
+
+        SetGameToBeStarted();
 
         if (is_gameStarted)
         {

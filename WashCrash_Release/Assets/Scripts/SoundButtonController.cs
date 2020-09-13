@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SoundButtonController : MonoBehaviour
@@ -11,6 +16,7 @@ public class SoundButtonController : MonoBehaviour
 
     private void Start()
     {
+        isOn = true;
         audio = FindObjectOfType<AudioManager>();
     }
 
@@ -31,7 +37,11 @@ public class SoundButtonController : MonoBehaviour
         isOn = true;
         thisButton.image.sprite = onImage;
         if (audio != null)
+        {
             audio.SoundOn();
+            audio.Play("MenuTheme");
+        }
+
     }
 
     public void SetOff()

@@ -28,9 +28,11 @@ public class EnemyIntro : MonoBehaviour
 
     void Update()
     {
-        if (EnemySpawner.s_is_New_Enemy)
+        if (EnemySpawner.s_is_New_Enemy && BackGroundChange.is_on_BG_change)
         {
             Intro_On(EnemySpawner.s_indexOfEnemy);
+            EnemySpawner.s_indexOfEnemy++;
+            EnemySpawner.s_is_New_Enemy = false;
         }
     }
 
@@ -40,17 +42,17 @@ public class EnemyIntro : MonoBehaviour
     {
         m_index = index;
 
-        if (m_index < stories.Length)
+        if (m_index <= stories.Length && m_index >= 0)
         {
             Time.timeScale = timeScale;
             stories[index].SetActive(true);
-            EnemySpawner.s_is_New_Enemy = false;
         }
     }
 
     public void Intro_Off()
     {
         Time.timeScale = 1f;
-        stories[m_index].SetActive(false);
+        if (m_index < stories.Length && m_index >= 0)
+            stories[m_index].SetActive(false);
     }
 }

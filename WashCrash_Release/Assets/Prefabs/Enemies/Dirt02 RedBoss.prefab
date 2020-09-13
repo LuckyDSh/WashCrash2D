@@ -37,8 +37,8 @@ MonoBehaviour:
   turnSpeed: 0.065
   repelRange: 10
   repelAmount: 1
-  startMinChaseDistance: 5
-  minChaseDistance: 3
+  startMinChaseDistance: 8
+  minChaseDistance: 5
   maxChaseDistance: 100
 --- !u!114 &5794704100576409941
 MonoBehaviour:

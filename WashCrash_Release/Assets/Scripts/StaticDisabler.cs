@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
+using UnityEngine;
 
 public class StaticDisabler : MonoBehaviour
 {
@@ -16,36 +21,28 @@ public class StaticDisabler : MonoBehaviour
 
     #region UnityMethods
 
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
 
     private void OnLevelWasLoaded(int level)
     {
-        enemyBar = FindObjectOfType<LevelBar>();
-        level = 1;
-
-        ProgressBar.s_meltBarSlider.value = ProgressBar.s_meltBarSlider.maxValue;
-        enemyBar.slider.value = 0;
-
-        foreach (var obj in objsTo_enable_disable)
+        if(level == 1)
         {
-            obj.SetActive(false);
-        }
+            enemyBar = FindObjectOfType<LevelBar>();
 
-        if (Player == null)
-            Instantiate(Player, init_pos_for_Player, Quaternion.identity);
-    }
+            ProgressBar.s_meltBarSlider.value = ProgressBar.s_meltBarSlider.maxValue;
+            enemyBar.slider.value = 0;
 
-    void Update()
-    {
+            foreach (var obj in objsTo_enable_disable)
+            {
+                obj.SetActive(false);
+            }
 
-    }
-
-    void FixedUpdate()
-    {
-
+            if (Player == null)
+                Instantiate(Player, init_pos_for_Player, Quaternion.identity);
+        }     
     }
 
     #endregion

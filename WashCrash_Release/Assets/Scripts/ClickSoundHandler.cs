@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
+using UnityEngine;
 
 public class ClickSoundHandler : MonoBehaviour
 {
@@ -7,7 +12,8 @@ public class ClickSoundHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<AudioManager>(); 
+        FindObjectOfType<AudioManager>();
+        audioManager.Play("MenuTheme");
     }
 
     public void PlaySound(string name)

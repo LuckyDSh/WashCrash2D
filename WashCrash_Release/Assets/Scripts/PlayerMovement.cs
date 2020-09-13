@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -36,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
 
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
+
+        //movement.x = Input.GetAxisRaw("Horizontal");
+        //movement.y = Input.GetAxisRaw("Vertical");
 
         moveSpeed = startMoveSpeed /** Progression.Growth*/;
     }

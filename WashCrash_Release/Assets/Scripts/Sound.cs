@@ -1,4 +1,8 @@
-﻿
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
 using UnityEngine;
 
 [System.Serializable]

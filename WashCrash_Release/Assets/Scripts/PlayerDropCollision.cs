@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +49,7 @@ public class PlayerDropCollision : MonoBehaviour
 
         rb = player.GetComponent<Rigidbody2D>();
         collider = player.GetComponent<Collider2D>();
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.instance;
 
         mass = rb.mass;
         gravity = rb.gravityScale;
@@ -85,7 +90,17 @@ public class PlayerDropCollision : MonoBehaviour
 
                 if (gameObject.tag == "SpecialDrop(Coin)")
                 {
-                    AddCoin();
+                    AddCoin(1); // one coin
+                }
+
+                if (gameObject.tag == "SpecialDrop(Coinx2)")
+                {
+                    AddCoin(2); // two coins
+                }
+
+                if (gameObject.tag == "SpecialDrop(Coinx3)")
+                {
+                    AddCoin(3); // three coins
                 }
 
                 if (gameObject.tag == "SpecialDrop(TimerStop)")
@@ -106,11 +121,20 @@ public class PlayerDropCollision : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (isCatched)
+        {
+            isCatched = false;
+            UnDo();
+        }
+    }
+
     #region Coin Bubble
-    private void AddCoin()
+    private void AddCoin(int multiplier)
     {
         audioManager.Play("BubblePop");
-        PlayerScoreRecorder.s_recorder_instance.moneyAmount += moneyAmount;
+        PlayerScoreRecorder.s_recorder_instance.moneyAmount += moneyAmount * multiplier;
 
         Destroy(gameObject);
     }
@@ -182,15 +206,6 @@ public class PlayerDropCollision : MonoBehaviour
 
         isCatched = false;
         UnDo();
-    }
-
-    private void OnDestroy()
-    {
-        if (isCatched)
-        {
-            isCatched = false;
-            UnDo();
-        }
     }
 
     void Follow(Transform target)

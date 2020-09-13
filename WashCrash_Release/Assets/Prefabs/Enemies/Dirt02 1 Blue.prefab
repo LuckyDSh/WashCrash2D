@@ -49,6 +49,8 @@ MonoBehaviour:
     type: 3}
   damage: 10
   reward: 15
+  freezy_effect: {fileID: 0}
+  volty_effect: {fileID: 0}
 --- !u!114 &5794704102087005047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,13 +64,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1258864489}
-  moveSpeed: 3
+  moveSpeed: 4
   smoothedSpeed: 0.5
   turnSpeed: 0.065
   repelRange: 10
   repelAmount: 1
   startMinChaseDistance: 5
-  minChaseDistance: 3
+  minChaseDistance: 5
   maxChaseDistance: 15
 --- !u!1001 &84863147888605246
 PrefabInstance:

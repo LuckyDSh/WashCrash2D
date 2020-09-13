@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -23,6 +28,9 @@ public class EnemyAI : MonoBehaviour
     public float minChaseDistance;
     public float maxChaseDistance = 20f;
     new Collider2D collider;
+    private BackGroundChange backGround;
+    private float distance;
+    private float bg_distance;
     #endregion
 
     // Initialization
@@ -31,6 +39,7 @@ public class EnemyAI : MonoBehaviour
         collider = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         if (EnemyRBs == null) EnemyRBs = new List<Rigidbody2D>();
+        backGround = GameObject.Find("BackGroundImg").GetComponent<BackGroundChange>();
 
         EnemyRBs.Add(rb);
     }
@@ -41,7 +50,7 @@ public class EnemyAI : MonoBehaviour
         Vector2 directionForRed = (PlayerMovement.Position - rb.position).normalized;
         Vector2 newPos;
 
-        if (gameObject.tag == "EnemyRed") 
+        if (gameObject.tag == "EnemyRed")
         {
             newPos = MoveRegular(directionForRed);
             rb.MovePosition(newPos);
@@ -55,7 +64,8 @@ public class EnemyAI : MonoBehaviour
 
     private void OnDestroy()
     {
-        EnemyRBs.Remove(rb);
+        if (rb)
+            EnemyRBs.Remove(rb);
     }
 
     // Motion, avoidence from other enemies and player
@@ -82,7 +92,21 @@ public class EnemyAI : MonoBehaviour
 
         // REPEL FORCE FOR PLAYER
 
-        float distance = Vector2.Distance(rb.position, PlayerMovement.Position);
+        distance = Vector2.Distance(rb.position, PlayerMovement.Position);
+
+        foreach (var point in backGround.borders_points)
+        {
+            bg_distance = Vector2.Distance(rb.position, point.transform.position);
+            Vector2 new_direction = (rb.position - (Vector2)point.transform.position).normalized;
+
+            if (bg_distance < minChaseDistance)
+            {
+                animator.SetBool("isMoving", false);
+                newPos += new_direction * Time.fixedDeltaTime * moveSpeed;
+                break;
+            }
+        }
+
         if (distance >= minChaseDistance) animator.SetBool("isMoving", false);
         else
         {

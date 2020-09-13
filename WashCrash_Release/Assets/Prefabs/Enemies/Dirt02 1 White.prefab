@@ -38,7 +38,7 @@ MonoBehaviour:
   repelRange: 10
   repelAmount: 1
   startMinChaseDistance: 5
-  minChaseDistance: 3
+  minChaseDistance: 5
   maxChaseDistance: 20
 --- !u!114 &5794704102333710844
 MonoBehaviour:
@@ -57,6 +57,8 @@ MonoBehaviour:
     type: 3}
   damage: 10
   reward: 60
+  freezy_effect: {fileID: 0}
+  volty_effect: {fileID: 0}
 --- !u!114 &7964580686237524777
 MonoBehaviour:
   m_ObjectHideFlags: 0

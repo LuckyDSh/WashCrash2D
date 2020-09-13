@@ -23,6 +23,9 @@ TagManager:
   - ExtraLife
   - SpecialDrop(Coinx3)
   - SpecialDrop(Coinx2)
+  - LevelBar
+  - EnemyIntroPanel
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX

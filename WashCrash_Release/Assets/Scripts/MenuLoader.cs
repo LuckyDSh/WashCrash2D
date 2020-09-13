@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
+using UnityEngine;
 
 public class MenuLoader : MonoBehaviour
 {
@@ -11,6 +16,7 @@ public class MenuLoader : MonoBehaviour
     {
         audioManager = AudioManager.instance;
         isMusicPlaying = true;
+  
         PlayMusic(musicToPlay);
     }
 

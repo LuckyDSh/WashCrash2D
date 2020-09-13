@@ -18,9 +18,7 @@ public class GameOver : MonoBehaviour
 
     private void Start()
     {
-        Slider slider = FindObjectOfType<Slider>();
-        if (slider.tag == "MeltBar")
-            meltBar = slider;
+        meltBar = GameObject.FindGameObjectWithTag("MeltBar").GetComponent<Slider>();
         meltBar.value = meltBar.maxValue;
         gameOverUI.SetActive(false);
     }

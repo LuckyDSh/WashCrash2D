@@ -1,10 +1,15 @@
-﻿
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
 using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
     public int health = 20;
     public GameObject deathEffect;
+    GameObject effect_buffer;
 
     public void TakeDamage(int amount)
     {
@@ -15,11 +20,11 @@ public class Entity : MonoBehaviour
 
     public virtual void Die()
     {
-        GameObject effect = Instantiate(deathEffect, transform.position, transform.rotation);
+        effect_buffer = Instantiate(deathEffect, transform.position, transform.rotation);
         //effect.transform.localScale = transform.localScale;
         VibrationController.is_vibrating = true;
 
-        Destroy(effect,1f);
+        Destroy(effect_buffer, 1f);
         Destroy(gameObject); 
     }
 }

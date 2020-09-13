@@ -12,9 +12,11 @@ public class VibrationController : MonoBehaviour
     public static bool is_on = true;
     #endregion
 
+
+
     #region UnityMethods
 
-    private void Start()
+    private void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
@@ -23,7 +25,7 @@ public class VibrationController : MonoBehaviour
     {
         if (is_vibrating && is_on)
         {
-            Debug.Log("Vibration...");
+            
             Handheld.Vibrate();
             is_vibrating = false;
         }

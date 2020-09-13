@@ -65,6 +65,8 @@ public class LevelLoad : MonoBehaviour
             effect.SetActive(true);
         }
 
+        AudioManager.instance.Stop("MenuTheme");
+
         yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -72,13 +74,14 @@ public class LevelLoad : MonoBehaviour
 
     public void LoadPreviousLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         MoneyController.game_is_over = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void LoadThisLevel()
     {
         //MoneyController.number += PlayerScoreRecorder.s_recorder_instance.moneyAmount;
+        MoneyController.game_is_over = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

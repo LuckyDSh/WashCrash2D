@@ -1,4 +1,8 @@
-﻿
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
 using System;
 using UnityEngine;
 
@@ -8,9 +12,14 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
     public static bool is_silent;
 
-    private void Awake()
+    private void Start()
     {
         is_silent = false;
+        SoundOn();
+    }
+
+    private void Awake()
+    {
 
         //// CODE TO SHIFT AUDIO CLIP FROM 1 SCENE TO ANOTHER
         if (instance == null) instance = this; // create obj if it is not exist
@@ -68,6 +77,7 @@ public class AudioManager : MonoBehaviour
     public void SoundOn()
     {
         is_silent = false;
+        Play("MenuTheme");
     }
 
 }

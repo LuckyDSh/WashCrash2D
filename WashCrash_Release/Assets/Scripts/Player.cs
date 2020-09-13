@@ -1,5 +1,10 @@
-﻿
+﻿/*
+* TickLuck Team
+* All rights reserved
+*/
+
 using BayatGames.SaveGameFree;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,16 +17,20 @@ public class Player : Entity
     private bool timeIsOn;
     public GameObject armorEffect;
     public GameObject rebornEffect;
+    public GameObject freezeEffect;
     [Range(1, 10)] private int number_of_record = 1;
-    [SerializeField] private GameObject GO_ui;
+    [SerializeField] public GameObject GO_ui;
     private Image ui_extraLife;
     [SerializeField] private int timeFreeze = 3;
     public static bool is_extraLife;
+    private float multiplier;
     #endregion
 
     #region Unity Methods 
     private void Start()
     {
+        multiplier = 0;
+        is_extraLife = false;
         time_overall = 0;
         timeIsOn = true;
         ui_extraLife = GameObject.FindGameObjectWithTag("ExtraLife").GetComponent<Image>();
@@ -46,7 +55,8 @@ public class Player : Entity
             {
                 rebornEffect.SetActive(true);
                 ui_extraLife.enabled = false;
-                ProgressBar.s_meltBarSlider.value += ProgressBar.s_meltBarSlider.maxValue / 2;
+                ProgressBar.s_meltBarSlider.value = ProgressBar.s_meltBarSlider.maxValue;
+                ProgressBar.maxTime = ProgressBar.initialTime;
                 is_extraLife = false;
             }
             else
@@ -55,21 +65,20 @@ public class Player : Entity
             }
         }
 
-        if (GameOver.meltBar.value == 0) // min value
-        {
-            if (is_extraLife)
-            {
-                rebornEffect.SetActive(true);
-                ui_extraLife.enabled = false;
-                is_extraLife = false;
-                GameOver.meltBar.value += GameOver.meltBar.maxValue / 2;
-            }
-            else
-            {
-                is_extraLife = false;
-                Die();
-            }
-        }
+        //if (GameOver.meltBar.value == 0) // min value
+        //{
+        //    if (is_extraLife)
+        //    {
+        //        rebornEffect.SetActive(true);
+        //        ui_extraLife.enabled = false;
+        //        is_extraLife = false;
+        //        GameOver.meltBar.value = GameOver.meltBar.maxValue;
+        //    }
+        //    else
+        //    {
+        //        Die();
+        //    }
+        //}
     }
     #endregion
 
@@ -100,7 +109,7 @@ public class Player : Entity
     {
         timeIsOn = false;
         time_overall = 0;
-        FindObjectOfType<AudioManager>().Play("PlayerDie");
+        AudioManager.instance.Play("PlayerDie");
 
         base.deathEffect.SetActive(true);
         gameObject.GetComponent<Collider2D>().enabled = false;
@@ -138,9 +147,24 @@ public class Player : Entity
     private IEnumerator Freeze()
     {
         PlayerMovement._rb.velocity /= 2f;
+        freezeEffect.SetActive(true);
 
+        //while (multiplier < 2)
+        //{
+        //    yield return new WaitForSeconds(0.1f);
+        //    multiplier += 10f * Time.fixedDeltaTime;
+        //}
         yield return new WaitForSeconds(timeFreeze);
 
-        PlayerMovement._rb.velocity *= 2f;
+        freezeEffect.SetActive(false);
+        while (multiplier < 4)
+        {
+            if (multiplier == 3)
+                multiplier -= 0.1f;
+
+            PlayerMovement._rb.velocity *= (0.5f + multiplier / 10);
+            multiplier++;
+        }
+        multiplier = 0;
     }
 }
